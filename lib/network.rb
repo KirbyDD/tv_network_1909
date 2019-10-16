@@ -14,4 +14,13 @@ class Network
     char = check_array.max {|char, char2| char.salary <=> char2.salary}
     char.actor
   end
+
+  def payroll
+    check_array = @shows.map {|show| show.characters}.flatten
+    result = check_array.reduce({}) do |acc, char|
+      acc[char.actor] = char.salary
+      acc
+    end
+    result
+  end
 end
